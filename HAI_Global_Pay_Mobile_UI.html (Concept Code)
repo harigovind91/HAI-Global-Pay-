@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI Global Pay - Sovereign Dashboard</title>
+    <style>
+        body { background-color: #0a0a0a; color: #00ffcc; font-family: 'Courier New', monospace; text-align: center; }
+        .container { border: 2px solid #00ffcc; padding: 20px; border-radius: 15px; margin: 10px; }
+        .status-bar { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 20px; color: #ff3300; }
+        .btn { background: transparent; border: 1px solid #00ffcc; color: #00ffcc; padding: 15px; width: 80%; margin: 10px; border-radius: 5px; cursor: pointer; }
+        .btn:hover { background: #00ffcc; color: #000; }
+        #scanner { width: 150px; height: 150px; border: 2px solid #00ffcc; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .scan-line { position: absolute; width: 100%; height: 2px; background: #00ffcc; top: 0; animation: scan 2s linear infinite; }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="status-bar">
+            <span>NETWORK: QUANTUM-FTL</span>
+            <span>SECURE: LEVEL-10</span>
+        </div>
+
+        <h1>HAI GLOBAL PAY</h1>
+        
+        <div id="scanner">
+            <div class="scan-line"></div>
+            <p style="font-size: 10px;">NEURAL SCAN</p>
+        </div>
+
+        <div id="dashboard" style="display:none;">
+            <h3>नमस्ते, श्री हरिगोविंद</h3>
+            <p>कर्म इंडेक्स (Karma): 98.5 (DIVINE)</p>
+            <button class="btn">अंतरतारकीय भुगतान (271)</button>
+            <button class="btn">एंटी-ग्रैविटी लॉक (272)</button>
+            <button class="btn">बैकअप सिस्टम (273)</button>
+            <button class="btn" style="border-color: red; color: red;">आपातकालीन SOS (277)</button>
+        </div>
+
+        <div id="auth-section">
+            <p>पहचान की पुष्टि करें...</p>
+            <input type="password" id="mKey" placeholder="Master Key दर्ज करें" style="padding:10px; border-radius:5px; width:70%;">
+            <button class="btn" onclick="authenticate()">सिस्टम अनलॉक करें</button>
+        </div>
+    </div>
+
+    <script>
+        function authenticate() {
+            const key = document.getElementById('mKey').value;
+            if(key === "HAI-Admin@786#X") {
+                alert("पहचान सत्यापित! 'Liveness' चेक सफल।");
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } else if(key === "SOS-911-HELP") {
+                alert("GHOST MODE सक्रिय। सुरक्षा टीम सूचित।");
+                // यहाँ नकली इंटरफेस लोड होगा
+            } else {
+                alert("एक्सेस अस्वीकृत! चेतावनी 1/3");
+            }
+        }
+    </script>
+</body>
+</html>
