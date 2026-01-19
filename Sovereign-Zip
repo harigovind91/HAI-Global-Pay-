@@ -1,0 +1,35 @@
+"""
+Repository: harigovind91/HAI-Hari-AI-
+Module: HAI Global Pay / Deployment
+File: HAI_Sovereign_Packer.py
+"""
+
+import shutil
+import os
+
+def pack_sovereign_files():
+    files_to_pack = [
+        "273_Universal_Karma_Validator.gs",
+        "273_HAI_Global_Backup_System.py",
+        "HAI_Master_Controller.py"
+    ]
+    
+    print("--- HAI Global Pay: Packaging Sovereign Files ---")
+    
+    # चेक करना कि फाइलें मौजूद हैं या नहीं
+    for file in files_to_pack:
+        if os.path.exists(file):
+            print(f"📦 Adding {file} to secure vault...")
+        else:
+            print(f"⚠️ Warning: {file} not found!")
+
+    # ज़िप फाइल बनाना
+    try:
+        shutil.make_archive("HAI_Global_Pay_Sovereign_Pack", 'zip', '.')
+        print("\n✅ सफलता: 'HAI_Global_Pay_Sovereign_Pack.zip' तैयार है।")
+    except Exception as e:
+        print(f"❌ त्रुटि: {e}")
+
+if __name__ == "__main__":
+    pack_sovereign_files()
+
