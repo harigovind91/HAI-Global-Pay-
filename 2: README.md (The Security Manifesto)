@@ -1,12 +1,43 @@
 # 🏛️ HAI Millennium Sovereign OS [PRIVATE]
+
 **Owner:** Harigovind Singh Chauhan  
-**Org:** Avikary Cosy Science Private Limited  
+**Organization:** Avikary Cosy Science Private Limited  
+**Security Level:** Level-10-Alpha (Sovereign Grade)
+
+---
 
 ## 🛡️ Security Protocol
-- **Visibility:** STRICTLY PRIVATE.
-- **Master Key:** 786 (Admin) / 392 (Recovery).
-- **Automation:** Fully autonomous neural sync enabled.
-- **SSL:** Enforced HTTPS RSA-4096.
+- **Visibility:** STRICTLY PRIVATE. Only accessible by authorized researchers of ACIWHO Welfare Foundation.
+- **Master Access:** Protected by SHA-256 encrypted Master Key (`HAI-Admin@786#X`).
+- **Recovery Mode:** Enabled via Secondary Recovery Phrase (`REC-392-Hari-2026`).
+- **Automation:** Fully autonomous neural sync enabled for CEO biometrics.
+- **SSL/Encryption:** Enforced HTTPS RSA-4096 with AI-hardened firewall.
+
+---
+
+## 🛠️ System Architecture
+यह सिस्टम एक डीट्रेंट्रलाइज्ड आर्किटेक्चर पर आधारित है जो **HAI Global Pay** और **Sovereign OS** को आपस में जोड़ता है।
+
+
+
+### Key Components:
+1. **Core OS:** Neural Sync के माध्यम से संचालित।
+2. **Global Pay:** सीमा पार (Cross-border) सुरक्षित लेनदेन के लिए।
+3. **Admin Panel:** पूर्ण नियंत्रण के लिए सुरक्षित डैशबोर्ड।
+
+---
 
 ## ⚠️ Legal Notice
-Unauthorized access or code duplication is an act of cyber-warfare against Avikary Cosy Science IP. This system is protected by AI-hardened encryption.
+**Cyber-Warfare Clause:** Unauthorized access, code duplication, or any attempt to reverse engineer the **HAI Millennium Sovereign OS** is considered an act of cyber-warfare against **Avikary Cosy Science IP**. This system is protected by automated counter-measures.
+
+> **Prosecution Level:** MAXIMUM (International IP Law Enforcement)
+
+---
+
+## ⚙️ Installation & Usage
+1. इस प्रोजेक्ट को सुरक्षित सर्वर पर क्लोन करें।
+2. `.env` फ़ाइल में अपनी मास्टर कीज़ अपडेट करें।
+3. `main.html` या `app.py` को सुरक्षित ब्राउज़र में रन करें।
+
+---
+© 2026 Avikary Cosy Science Private Limited. All Rights Reserved.
