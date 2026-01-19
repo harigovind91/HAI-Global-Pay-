@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI Global Pay | Avikary Cosy Science</title>
+    <script src="https://cdn.tailwindcss.net"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        body { font-family: 'Orbitron', sans-serif; background: #00020a; color: #fff; overflow-x: hidden; }
+        .glass-header { background: rgba(0, 10, 20, 0.8); backdrop-filter: blur(20px); border-bottom: 2px solid #00f3ff; }
+        .corporate-card { background: linear-gradient(135deg, rgba(0,243,255,0.1) 0%, rgba(0,0,0,1) 100%); border: 1px solid rgba(0,243,255,0.3); border-radius: 20px; }
+        #movable-ad { position: fixed; bottom: 100px; right: 20px; width: 160px; height: 90px; background: rgba(0, 243, 255, 0.2); border: 2px solid #00f3ff; border-radius: 12px; cursor: move; z-index: 1000; resize: both; overflow: hidden; backdrop-filter: blur(10px); }
+        .official-stamp { border: 3px double #00f3ff; border-radius: 50%; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 7px; color: #00f3ff; position: absolute; right: 15px; bottom: 15px; transform: rotate(-15deg); opacity: 0.8; font-weight: bold; pointer-events: none; }
+        .neon-text { color: #00f3ff; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+    </style>
+</head>
+<body class="pb-32">
+
+    <header class="fixed top-0 w-full z-50 p-4 glass-header flex justify-between items-center">
+        <div class="flex flex-col">
+            <h1 class="text-cyan-400 font-black text-xl tracking-tighter">HAI GLOBAL PAY</h1>
+            <span class="text-[7px] text-gray-400 uppercase tracking-widest">A Unit of Avikary Cosy Science Pvt Ltd</span>
+        </div>
+        <button onclick="masterAccess()" class="border-2 border-cyan-500 rounded-full p-2 hover:bg-cyan-500/20 transition">
+            <i class="fas fa-fingerprint text-2xl text-cyan-400"></i>
+        </button>
+    </header>
+
+    <main class="pt-24 px-4 max-w-lg mx-auto space-y-6">
+        
+        <div class="corporate-card p-6 relative">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h2 class="neon-text font-bold text-sm uppercase">Harigovind Singh Chauhan</h2>
+                    <p class="text-[9px] text-gray-400">CEO & Director | Lead Researcher</p>
+                    <p class="text-[8px] text-cyan-500 mt-1">Mumbai | Varanasi | Azamgarh</p>
+                </div>
+                <i class="fas fa-shield-halved text-cyan-400 text-xl"></i>
+            </div>
+            <div class="text-[8px] space-y-1 text-gray-300 border-t border-gray-800 pt-3">
+                <p><i class="fas fa-university mr-2"></i>ACIWHO WELFARE FOUNDATION</p>
+                <p><i class="fab fa-paypal mr-2"></i>harigovindsingh91@gmail.com</p>
+                <p><i class="fas fa-bolt mr-2"></i>UPI: harigovindsingh91-2@okhdfcbank</p>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center glass-header p-3 rounded-xl border border-cyan-900">
+            <div class="text-[9px]"><i class="fas fa-cloud-sun text-yellow-500 mr-1"></i> 22°C | LUCKNOW</div>
+            <div class="text-[9px] text-green-400 animate-pulse font-bold tracking-widest">● AI TRANSLATION ACTIVE</div>
+        </div>
+
+        <div class="corporate-card p-6">
+            <h3 class="text-cyan-400 text-[10px] font-black mb-4 uppercase tracking-widest">Point Finger to Pay (Direct Connect)</h3>
+            <div class="w-20 h-20 mx-auto border-2 border-dashed border-cyan-500 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-hand-pointer text-3xl text-cyan-400 animate-bounce"></i>
+            </div>
+            <div class="space-y-2">
+                <input type="text" placeholder="RECIPIENT ACCOUNT / SWIFT" class="w-full bg-black/40 border border-cyan-900 p-3 rounded text-[10px] focus:border-cyan-400 outline-none">
+                <button class="w-full bg-cyan-600 font-black text-[10px] py-3 rounded-lg shadow-lg shadow-cyan-500/20">INSTANT WORLDWIDE TRANSFER</button>
+            </div>
+        </div>
+
+        <div id="receipt-area" class="corporate-card p-6 relative overflow-hidden border-l-4 border-cyan-500">
+            <h4 class="text-[10px] font-bold underline mb-3">OFFICIAL TRANSACTION RECEIPT</h4>
+            <div class="text-[8px] text-gray-400 space-y-2">
+                <p>INSTITUTION: AVIKARY COSY SCIENCE PVT LTD</p>
+                <p>WELFARE: ACIWHO WELFARE FOUNDATION</p>
+                <p>GATEWAY: HAI GLOBAL PAY (LITE SPEED)</p>
+                <p>TRX ID: HAI-786-2026-INFINITE</p>
+            </div>
+            <div class="flex gap-2 mt-6">
+                <button class="bg-gray-800 p-2 rounded text-[7px] flex-1 font-bold"><i class="fas fa-download"></i> DOWNLOAD</button>
+                <button class="bg-gray-800 p-2 rounded text-[7px] flex-1 font-bold"><i class="fas fa-share-alt"></i> SHARE</button>
+            </div>
+            <div class="official-stamp">
+                AVIKARY COSY<br>SCIENCE<br>OFFICIAL SEAL
+            </div>
+        </div>
+    </main>
+
+    <div id="movable-ad">
+        <div class="p-2">
+            <p class="text-[7px] text-cyan-400 font-bold">ADVERTISING PORTAL</p>
+            <p class="text-[6px] text-white mt-1 leading-tight">Your Business Here. Worldwide visibility on HAI Super-App.</p>
+            <div class="text-[5px] text-gray-500 mt-2">← Move or Resize →</div>
+        </div>
+    </div>
+
+    <nav class="fixed bottom-0 w-full glass-header grid grid-cols-4 p-4 z-50 text-center">
+        <button class="text-[9px] text-cyan-400"><i class="fas fa-chart-line block text-xl mb-1"></i>TRADE</button>
+        <button class="text-[9px] text-gray-500"><i class="fas fa-microphone-alt block text-xl mb-1"></i>AUDIO</button>
+        <button class="text-[9px] text-gray-500"><i class="fas fa-video block text-xl mb-1"></i>VIDEO</button>
+        <button class="text-[9px] text-gray-500"><i class="fas fa-users block text-xl mb-1"></i>SUBSCRIPTION</button>
+    </nav>
+
+    <script>
+        function masterAccess() {
+            const pin = prompt("ENTER MASTER KEY:");
+            if (pin === "392") {
+                new Audio('https://www.soundjay.com/buttons/sounds/button-37a.mp3').play();
+                alert("🔓 ACCESS GRANTED\nWELCOME CEO HARIGOVIND SINGH CHAUHAN");
+                document.body.style.border = "5px solid #00f3ff";
+            } else {
+                alert("❌ ACCESS DENIED");
+            }
+        }
+
+        // Movable Ad Script
+        const ad = document.getElementById('movable-ad');
+        let isDragging = false;
+        ad.onmousedown = () => isDragging = true;
+        document.onmousemove = (e) => {
+            if(isDragging) {
+                ad.style.left = (e.clientX - 80) + 'px';
+                ad.style.top = (e.clientY - 45) + 'px';
+            }
+        }
+        document.onmouseup = () => isDragging = false;
+    </script>
+</body>
+</html>
