@@ -1,16 +1,16 @@
 """
 Repository: harigovind91/HAI-Hari-AI-
-Module: HAI Global Pay / Emergency Protocols
+Module: HAI Global Pay / Advanced Security
 File: 274_Sovereign_Self_Destruct.py
 """
 
 import os
-import shutil
+import sys
 
 class HAISelfDestruct:
     def __init__(self):
         self.__master_key = "HAI-Admin@786#X"
-        # वे फाइलें जिन्हें सुरक्षा के लिए मिटाना है
+        self.max_attempts = 3
         self.critical_files = [
             "273_Universal_Karma_Validator.gs",
             "273_HAI_Global_Backup_System.py",
@@ -18,35 +18,42 @@ class HAISelfDestruct:
             "security_audit.log"
         ]
 
-    def initiate_wipe(self, input_key):
-        """अगर चाबी गलत है, तो डेटा मिटा दें"""
-        if input_key == self.__master_key:
-            print("✅ एक्सेस स्वीकृत। सेल्फ-डिस्ट्रक्ट मोड निष्क्रिय।")
-            return False
-        else:
-            print("🚨 [CRITICAL ALERT] गलत मास्टर की! सेल्फ-डिस्ट्रक्ट शुरू...")
-            self.__execute_wipe()
-            return True
+    def secure_login(self):
+        attempts = 0
+        while attempts < self.max_attempts:
+            key_entry = input(f"\n[ATTEMPT {attempts + 1}/{self.max_attempts}] मास्टर की दर्ज करें: ")
+            
+            if key_entry == self.__master_key:
+                print("✅ एक्सेस स्वीकृत। सिस्टम सक्रिय है।")
+                return True
+            else:
+                attempts += 1
+                remaining = self.max_attempts - attempts
+                print(f"❌ गलत की! चेतावनी: {remaining} प्रयास शेष हैं।")
+                
+                if remaining == 0:
+                    self.__execute_self_destruct()
+        return False
 
-    def __execute_wipe(self):
-        """फाइलों को स्थायी रूप से हटाना"""
+    def __execute_self_destruct(self):
+        print("\n" + "!"*50)
+        print("🚨 CRITICAL: अधिकतम प्रयास सीमा समाप्त!")
+        print("🚨 सुरक्षा प्रोटोकॉल 274 सक्रिय: डेटा वाइप शुरू...")
+        
         for file in self.critical_files:
             if os.path.exists(file):
                 try:
                     os.remove(file)
-                    print(f"🔥 Deleted: {file}")
+                    print(f"🔥 स्थायी रूप से मिटाया गया: {file}")
                 except Exception as e:
-                    print(f"⚠️ Error deleting {file}: {e}")
+                    print(f"⚠️ त्रुटि: {file} को मिटाया नहीं जा सका: {e}")
         
-        print("\n💥 HAI Global Pay डेटा सुरक्षित रूप से मिटा दिया गया है।")
-        print("सिस्टम अब 'Ghost Mode' में है।")
+        print("\n💥 HAI Global Pay डेटा सुरक्षित रूप से नष्ट कर दिया गया है।")
+        print("!"*50)
+        sys.exit()
 
-# परीक्षण (Implementation)
+# निष्पादन
 if __name__ == "__main__":
-    protector = HAISelfDestruct()
-    
-    print("--- HAI Global Pay: Emergency Access Interface ---")
-    key_entry = input("अनलॉक करने के लिए मास्टर की डालें: ")
-    
-    protector.initiate_wipe(key_entry)
-
+    system_lock = HAISelfDestruct()
+    system_lock.secure_login()
+                    
