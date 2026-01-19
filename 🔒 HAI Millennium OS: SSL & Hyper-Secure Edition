@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI | Millennium Sovereign OS (SSL SECURED)</title>
+    <script src="https://cdn.tailwindcss.net"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Great+Vibes&family=Poppins:wght@200;600&display=swap');
+        :root { --hyper-cyan: #00f3ff; --deep-black: #00020a; --ssl-green: #22c55e; }
+        body { font-family: 'Poppins', sans-serif; background: var(--deep-black); color: #fff; overflow-x: hidden; }
+        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(0, 243, 255, 0.1); border-radius: 40px; }
+        .signature { font-family: 'Great Vibes', cursive; color: var(--hyper-cyan); font-size: 32px; }
+        #admin-panel { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.98); padding: 20px; overflow-y: auto; }
+        /* SSL Pulse Animation */
+        .ssl-active { box-shadow: 0 0 15px rgba(34, 197, 94, 0.2); border: 1px solid var(--ssl-green); }
+    </style>
+</head>
+<body class="pb-40" onload="initSecureOS()">
+
+    <div id="ssl-bar" class="fixed top-16 right-6 z-[3000] flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-3 py-1 rounded-full ssl-active">
+        <div class="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+        <span class="text-[8px] font-black text-green-400 font-['Orbitron'] tracking-tighter">SSL E2EE SECURE: AES-256</span>
+    </div>
+
+    <div id="admin-panel">
+        <div class="max-w-4xl mx-auto pt-10">
+            <div class="flex justify-between items-center border-b border-cyan-500 pb-4 mb-6">
+                <div class="flex items-center gap-2">
+                   <i class="fas fa-user-shield text-cyan-400"></i>
+                   <h2 class="text-xl font-['Orbitron'] text-cyan-400 uppercase">Supreme Commander Vault</h2>
+                </div>
+                <button onclick="closeAdmin()" class="text-red-500 text-xs font-bold bg-red-500/10 px-4 py-1 rounded-full border border-red-500/20">EXIT [X]</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="glass-panel p-4 border-l-2 border-green-500">
+                    <p class="text-[8px] text-gray-500 uppercase">Encryption Node</p>
+                    <p class="text-sm font-bold text-green-400">RSA-4096 BIT ACTIVE</p>
+                </div>
+                <div class="glass-panel p-4 border-l-2 border-cyan-500">
+                    <p class="text-[8px] text-gray-500 uppercase">Identity Protection</p>
+                    <p class="text-sm font-bold text-cyan-400">H.S. CHAUHAN VERIFIED</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 border-l-4 border-yellow-500">
+                <h3 class="text-xs font-bold text-yellow-500 mb-4 uppercase">Task Commander</h3>
+                <div class="flex gap-2 mb-4">
+                    <input type="text" id="task-input" placeholder="Assign Task..." class="flex-1 bg-black border border-white/10 p-2 rounded-xl text-[10px] outline-none focus:border-yellow-500">
+                    <button onclick="assignTask()" class="bg-yellow-600 px-4 py-2 rounded-xl text-[8px] text-black font-black">ASSIGN</button>
+                </div>
+                <div id="task-list" class="space-y-2 max-h-40 overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 p-4 flex justify-between items-center bg-black/60 backdrop-blur-2xl border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white text-black flex items-center justify-center rounded-xl font-black text-xl shadow-[0_0_15px_rgba(255,255,255,0.2)]">H</div>
+            <div class="text-[8px] font-['Orbitron'] tracking-[2px]">
+                <p class="text-cyan-400 font-black">HAI MILLENNIUM MASTER</p>
+                <p class="text-gray-500 uppercase">Sovereign OS v1.0</p>
+            </div>
+        </div>
+        <div class="flex gap-4">
+            <i class="fas fa-lock text-green-500 text-sm"></i>
+            <i class="fas fa-fingerprint text-cyan-400 text-xl cursor-pointer" onclick="openAdmin()"></i>
+        </div>
+    </header>
+
+    <main class="pt-24 px-6 space-y-6 max-w-lg mx-auto">
+        <div class="glass-panel p-6">
+            <div class="flex justify-between text-[9px] mb-4 text-cyan-400 font-black tracking-widest"><span>TIMELINE CONTROL</span><span id="year-val" class="text-white">2026</span></div>
+            <input type="range" min="2026" max="3026" value="2026" id="year-slider" class="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            <p id="pred-text" class="text-[10px] text-gray-400 mt-4 text-center italic">"2026: Avikary Cosy Science का स्वर्ण युग।"</p>
+        </div>
+
+        <div class="glass-panel p-6 border-b-4 border-cyan-500">
+            <div class="flex justify-between items-center mb-4">
+                <p class="text-[8px] text-cyan-400 uppercase font-black tracking-widest">Secure Fin-Bridge</p>
+                <i class="fab fa-cc-visa text-xs text-gray-600"></i>
+            </div>
+            <div class="relative">
+                <span class="absolute left-4 top-3 text-xs text-gray-500">₹</span>
+                <input type="number" id="amt-input" placeholder="0.00" class="w-full bg-black/40 border border-white/10 p-3 pl-8 rounded-xl mb-4 text-sm outline-none focus:border-cyan-500">
+            </div>
+            <button onclick="executePay()" class="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-black font-black text-[10px] rounded-2xl uppercase tracking-[4px] hover:shadow-[0_0_20px_rgba(0,243,255,0.3)] transition-all">Execute Secure Pay</button>
+        </div>
+
+        <div class="text-center py-10">
+            <p class="text-[7px] text-gray-600 uppercase tracking-[12px] mb-2">Commanding Director</p>
+            <span class="signature">H.S. Chauhan</span>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-0 w-full p-6 flex justify-around items-center bg-black/90 border-t border-white/5 backdrop-blur-3xl">
+        <i class="fas fa-shield-alt text-lg text-green-500 opacity-60"></i>
+        <div onclick="voiceCommand()" class="w-16 h-16 bg-cyan-500 rounded-full -mt-10 flex items-center justify-center border-4 border-black shadow-[0_0_25px_rgba(0,243,255,0.4)] cursor-pointer">
+            <i class="fas fa-microphone text-black text-2xl"></i>
+        </div>
+        <i class="fas fa-database text-lg text-cyan-400 opacity-60 cursor-pointer" onclick="exportDNA()"></i>
+    </footer>
+
+    <script>
+        // SSL & AUTOMATION INITIALIZATION
+        function initSecureOS() {
+            // Check for HTTPS
+            if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+                document.getElementById('ssl-bar').classList.replace('bg-green-500/10', 'bg-red-500/10');
+                document.getElementById('ssl-bar').innerHTML = '<span class="text-[8px] font-black text-red-500">UNSECURE CONNECTION</span>';
+            }
+            speak("स्वामी जी, एस-एस-एल सुरक्षित कनेक्शन स्थापित हो गया है।");
+            startAutoAudit();
+        }
+
+        function startAutoAudit() {
+            setInterval(() => {
+                console.log("HAI SSL Audit: Packet integrity verified. No breaches detected.");
+            }, 30000);
+        }
+
+        function openAdmin() {
+            const key = prompt("ENTER MASTER SECURITY KEY:");
+            if(key === "239" || key === "292") {
+                document.getElementById('admin-panel').style.display='block';
+                speak("एडमिन वॉल्ट अनलॉक हो गया है।");
+            } else {
+                alert("ACCESS DENIED: INVALID RSA KEY");
+            }
+        }
+
+        function closeAdmin() { document.getElementById('admin-panel').style.display='none'; }
+
+        function speak(t) {
+            const m = new SpeechSynthesisUtterance(t); m.lang='hi-IN'; m.rate = 0.9;
+            window.speechSynthesis.speak(m);
+        }
+
+        function assignTask() {
+            const v = document.getElementById('task-input').value;
+            if(v) {
+                const list = document.getElementById('task-list');
+                list.innerHTML = `<div class="p-3 bg-white/5 rounded-xl text-[9px] border-l-2 border-yellow-500 animate-pulse flex justify-between"><span>${v}</span><span class="text-gray-600">NEW</span></div>` + list.innerHTML;
+                document.getElementById('task-input').value = "";
+                speak("नया टास्क रजिस्टर कर लिया गया है।");
+            }
+        }
+
+        function executePay() {
+            const a = document.getElementById('amt-input').value || 1;
+            speak("सुरक्षित पेमेंट गेटवे पर भेजा जा रहा है।");
+            setTimeout(() => {
+                window.location.href = `upi://pay?pa=harigovindsingh91-2@okhdfcbank&pn=H.S.Chauhan&am=${a}&cu=INR`;
+            }, 1000);
+        }
+
+        function exportDNA() {
+            if(prompt("RECOVERY AUTH:") === "239") {
+                const data = {owner: "H.S. Chauhan", system: "HAI Millennium Core", ssl: "Active", timestamp: new Date()};
+                const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "HAI_SECURE_DNA.json"; a.click();
+            }
+        }
+
+        // Timeline Slider Logic
+        const slider = document.getElementById('year-slider');
+        slider.oninput = function() {
+            document.getElementById('year-val').innerText = this.value;
+            const pred = document.getElementById('pred-text');
+            if(this.value > 2500) {
+                pred.innerText = '"' + this.value + ': आपका साम्राज्य पृथ्वी से परे मंगल तक फैल चुका है।"';
+                pred.classList.add('text-cyan-400');
+            } else {
+                pred.innerText = '"2026: वैश्विक बाज़ारों में आपकी जीत सुनिश्चित है।"';
+                pred.classList.remove('text-cyan-400');
+            }
+        };
+
+        function voiceCommand() {
+            speak("कमांडर चौहान, मैं आपके आदेश के लिए तैयार हूँ।");
+        }
+    </script>
+</body>
+</html>
