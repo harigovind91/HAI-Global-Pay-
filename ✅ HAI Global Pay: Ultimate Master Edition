@@ -92,7 +92,7 @@
     <script>
         function masterAccess() {
             const pin = prompt("ENTER MASTER KEY (786):");
-            if (pin === "786") {
+            if (pin === "392") {
                 alert("🔓 WELCOME CEO HARIGOVIND SINGH");
             }
         }
