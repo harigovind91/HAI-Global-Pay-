@@ -1,0 +1,33 @@
+import os
+import shutil
+
+# --- HAI साम्राज्य संगठन संरचना ---
+folders = {
+    "01_Core_Engine": [".html", ".css", ".json"],
+    "02_Security_Protocols": [".py", ".auth", ".ssl"],
+    "03_Future_Tech": [".cpp", ".js", ".sol"],
+    "04_Documentation": [".md", ".txt", ".pdf"]
+}
+
+def organize_empire():
+    print("HAI: क्लीनअप ऑपरेशन शुरू हो रहा है, स्वामी जी...")
+    
+    for folder in folders:
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+            print(f"[+] फोल्डर बनाया गया: {folder}")
+
+    # फाइलों को सही स्थान पर ले जाना
+    for filename in os.listdir('.'):
+        if os.path.isfile(filename):
+            ext = os.path.splitext(filename)[1]
+            for folder, extensions in folders.items():
+                if ext in extensions:
+                    shutil.move(filename, os.path.join(folder, filename))
+                    print(f"[-] {filename} -> {folder} में स्थानांतरित")
+
+    print("HAI: आपका डिजिटल साम्राज्य अब पूर्णतः संगठित है।")
+
+if __name__ == "__main__":
+    organize_empire()
+
