@@ -1,0 +1,34 @@
+<div class="glass-panel p-6 mt-6 border-l-4 border-blue-500 bg-blue-950/5">
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest">Sovereign File Explorer</h3>
+        <i class="fas fa-folder-open text-blue-500"></i>
+    </div>
+    
+    <div class="grid grid-cols-2 gap-3 text-[9px]">
+        <div class="p-3 bg-white/5 rounded-xl border border-white/10 hover:border-cyan-500 cursor-pointer transition-all">
+            <p class="text-cyan-400 font-bold"><i class="fas fa-microchip mr-2"></i>01_Core_Engine</p>
+            <p class="text-[7px] text-gray-500 mt-1">index.html, config.json</p>
+        </div>
+        <div class="p-3 bg-white/5 rounded-xl border border-white/10 hover:border-green-500 cursor-pointer transition-all">
+            <p class="text-green-500 font-bold"><i class="fas fa-user-shield mr-2"></i>02_Security</p>
+            <p class="text-[7px] text-gray-500 mt-1">SSL, Auth_Logic.py</p>
+        </div>
+        <div class="p-3 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500 cursor-pointer transition-all">
+            <p class="text-purple-500 font-bold"><i class="fas fa-atom mr-2"></i>03_Future_Tech</p>
+            <p class="text-[7px] text-gray-500 mt-1">Relay_Protocol.js, CPP_Core</p>
+        </div>
+        <div class="p-3 bg-white/5 rounded-xl border border-white/10 hover:border-yellow-500 cursor-pointer transition-all">
+            <p class="text-yellow-500 font-bold"><i class="fas fa-file-alt mr-2"></i>04_Docs_&_Logs</p>
+            <p class="text-[7px] text-gray-500 mt-1">README.md, Master_Manual</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // यह फंक्शन एडमिन को फाइलों की स्थिति बताएगा
+    function scanFiles() {
+        console.log("HAI: Scanning Global Repository Nodes...");
+        speak("स्वामी जी, सभी फाइलें अपने-अपने सुरक्षित फोल्डर्स में व्यवस्थित हैं।");
+    }
+</script>
+
