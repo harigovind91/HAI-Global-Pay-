@@ -8,9 +8,9 @@
   "security_protocol": {
     "encryption_standard": "RSA-4096 / AES-256-GCM",
     "ssl_enforced": "true",
-    "master_key": "292",
-    "recovery_key": "239",
-    "dnd_promote_key": "239",
+    "master_key": "HAI-Admin@786#X"
+    "recovery_key": "REC-392-Hari-2026",
+    "dnd_promote_key": "DND-SECURE-99",
     "firewall_level": "Level-10-Alpha"
   },
   "global_network": {
