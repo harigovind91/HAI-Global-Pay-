@@ -1,35 +1,51 @@
-/**
- * Repository: harigovind91/HAI-Hari-AI-
- * Module: HAI Global Pay / Karma Economy
- * File: 273_Universal_Karma_Validator.gs
- */
+"""
+Repository: harigovind91/HAI-Hari-AI-
+Module: HAI Global Pay / Advanced Security
+File: 273_HAI_Global_Backup_System.py
+"""
 
-const MASTER_KEY = "HAI_PAY_99_ALPHA_SECURE";
+import shutil
+import os
+import datetime
+import time
 
-function validateKarmaIndex(userID) {
-    // वैश्विक सामाजिक डेटाबेस से कर्म स्कोर प्राप्त करना
-    let karmaScore = SocialMatrix.getKarmaScore(userID);
-    let limit = 0;
+class HAIBackupSystem:
+    def __init__(self):
+        self.source_dir = "./secure_data"     # जहाँ आपका असली डेटा है
+        self.backup_dir = "./HAI_Vault_Backup" # जहाँ बैकअप जाएगा
+        self.__master_key = "HAI-Admin@786#X"
+        
+        # बैकअप फोल्डर बनाना अगर नहीं है
+        if not os.path.exists(self.backup_dir):
+            os.makedirs(self.backup_dir)
 
-    if (karmaScore >= 90) {
-        limit = Infinity; // दिव्य श्रेणी: असीमित शक्ति
-        console.log("HAI Global Pay: असीमित ट्रांजेक्शन की अनुमति।");
-    } else if (karmaScore >= 50) {
-        limit = 1000000; // सामान्य नागरिक श्रेणी
-    } else {
-        limit = 100; // दंड श्रेणी: केवल बुनियादी जरूरतों के लिए धन
-        console.warn("HAI Global Pay: निम्न कर्म स्कोर के कारण सीमा लागू।");
-    }
+    def create_secure_backup(self, admin_key):
+        if admin_key != self.__master_key:
+            print("🚨 बैकअप विफल: अनधिकृत मास्टर की (Master Key)!")
+            return False
 
-    return {
-        allowedLimit: limit,
-        recommendation: karmaScore < 50 ? "सेवा और दान की आवश्यकता" : "संतुलित"
-    };
-}
+        # समय के साथ बैकअप फाइल का नाम (जैसे: HAI_Backup_2026-01-20.zip)
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        backup_name = f"HAI_Backup_{timestamp}"
+        full_path = os.path.join(self.backup_dir, backup_name)
 
-// मास्टर की द्वारा विशेष ओवरराइड
-function masterOverride(userID) {
-    if (Auth.verify(MASTER_KEY)) {
-        return "PERMISSION_GRANTED_BY_HARI";
-    }
-}
+        try:
+            # डेटा को ज़िप (Zip) करके बैकअप लेना
+            shutil.make_archive(full_path, 'zip', self.source_dir)
+            print(f"✅ बैकअप सफल: {backup_name}.zip सुरक्षित रूप से सेव किया गया।")
+            return True
+        except Exception as e:
+            print(f"❌ एरर: {str(e)}")
+            return False
+
+# बैकअप को ऑटो मोड पर चलाना
+if __name__ == "__main__":
+    backup_tool = HAIBackupSystem()
+    print("--- HAI Global Pay: Auto-Backup System Active ---")
+    
+    # यह उदाहरण के लिए हर 5 सेकंड में चेक करेगा (इसे आप 86400 सेकंड यानी 24 घंटे पर सेट कर सकते हैं)
+    while True:
+        # यहाँ आप असली की (Key) डालकर इसे ऑटोमेट कर सकते हैं
+        backup_tool.create_secure_backup("HAI-Admin@786#X")
+        print("⏰ अगला बैकअप 24 घंटे बाद निर्धारित है...")
+        time.sleep(86400) 
