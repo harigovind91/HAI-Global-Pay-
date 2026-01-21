@@ -1,163 +1,129 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAI Sovereign OS | Universal Mirror Build</title>
+    <title>HAI Global Pay | One-Click Fast Gateway</title>
     <script src="https://cdn.tailwindcss.net"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Courier+Prime&display=swap');
-        :root { --accent: #00f3ff; --gold: #ffd700; --bg: #000814; --pay-accent: #00ffcc; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
-        .super-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(0, 243, 255, 0.1); border-radius: 30px; transition: 0.4s; }
-        .mirror-glow { animation: mirror-pulse 4s infinite; }
-        @keyframes mirror-pulse { 0%, 100% { border-color: rgba(0, 243, 255, 0.2); } 50% { border-color: var(--accent); } }
-        .loader-ring { border-top-color: var(--accent); animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;700&display=swap');
+        :root { --accent: #00f3ff; --bg: #000814; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #fff; overflow: hidden; }
+        .super-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(25px); border: 1px solid rgba(0, 243, 255, 0.1); border-radius: 20px; }
+        .hai-button { background: linear-gradient(90deg, #00f3ff, #0077ff); color: #000; font-weight: 900; letter-spacing: 1px; transition: 0.3s; }
+        .hai-button:active { transform: scale(0.95); opacity: 0.8; }
+        /* Fast Loader */
+        .fast-loader { border: 3px solid rgba(0,243,255,0.1); border-top: 3px solid var(--accent); border-radius: 50%; width: 50px; height: 50px; animation: spin 0.6s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body onload="BackendEngine.init()">
+<body onload="SovereignPay.init()">
 
-    <div id="boot-loader" class="fixed inset-0 z-[100000] bg-[#000814] flex flex-col items-center justify-center transition-opacity duration-1000">
-        <div class="w-24 h-24 border-4 border-white/10 loader-ring rounded-full mb-8"></div>
-        <h2 id="boot-text" class="font-['Orbitron'] text-cyan-400 tracking-[8px] text-[10px] uppercase text-center">Initializing Mirror Nodes...</h2>
-        <div class="w-64 h-1 bg-white/5 mt-4 rounded-full overflow-hidden">
-            <div id="boot-progress" class="h-full bg-cyan-400 w-0 transition-all duration-200"></div>
+    <header class="p-6 flex justify-between items-center bg-black/40 backdrop-blur-xl border-b border-white/5 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white text-black flex items-center justify-center rounded-lg font-bold text-xl">H</div>
+            <h1 class="text-[12px] font-['Orbitron'] tracking-[3px] text-cyan-400">HAI GLOBAL PAY</h1>
         </div>
-    </div>
-
-    <header class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/60 backdrop-blur-3xl border-b border-white/5">
-        <div class="flex items-center gap-4 cursor-pointer" onclick="UI.switch('main')">
-            <div class="w-10 h-10 bg-white text-black flex items-center justify-center rounded-lg font-bold text-xl shadow-[0_0_15px_white]">H</div>
-            <div class="hidden md:block">
-                <h1 class="text-[10px] font-['Orbitron'] tracking-[3px] text-cyan-400">HAI SOVEREIGN OS</h1>
-                <p id="mirror-status" class="text-[6px] text-green-500 tracking-widest uppercase">Mirror: Global-Active</p>
-            </div>
-        </div>
-        <div class="flex gap-6 items-center">
-            <div id="live-nodes" class="text-[8px] text-yellow-500 font-bold">NODES: --</div>
-            <i class="fas fa-wallet text-xl text-cyan-400 cursor-pointer" onclick="UI.switch('pay')"></i>
-            <i class="fas fa-fingerprint text-xl text-white cursor-pointer" onclick="UI.openVault()"></i>
-        </div>
+        <i class="fas fa-fingerprint text-xl opacity-30 cursor-pointer" onclick="UI.openAdmin()"></i>
     </header>
 
-    <main id="main-view" class="pt-32 px-6 max-w-6xl mx-auto space-y-10 transition-all duration-500">
-        <div class="super-panel p-8 mirror-glow border-l-4">
-            <h2 class="text-[10px] tracking-[5px] text-cyan-400 mb-4 uppercase">AI Command Interface</h2>
-            <div class="flex gap-4 items-center">
-                <input id="ai-input" type="text" placeholder="HAI Gemini से आदेश दें..." class="flex-1 bg-transparent border-none outline-none text-xl placeholder:opacity-20">
-                <i class="fas fa-microphone text-2xl text-cyan-500 cursor-pointer" onclick="BackendEngine.voice()"></i>
+    <main id="main-view" class="pt-8 px-6 max-w-lg mx-auto space-y-6">
+        <h2 class="text-center text-[10px] font-['Orbitron'] tracking-[5px] text-white/40 uppercase">Select Service Tier</h2>
+        
+        <div class="super-panel p-6 border-l-4 border-cyan-400">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h3 class="font-bold">Neural Pro</h3>
+                    <p class="text-[8px] opacity-50 uppercase">Global Node Activation</p>
+                </div>
+                <p class="text-xl font-black">₹499</p>
             </div>
+            <button onclick="SovereignPay.process('Neural Pro', 499)" class="hai-button w-full py-4 rounded-xl text-[10px] uppercase">One-Click Activate</button>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="super-panel p-8 text-center cursor-pointer hover:bg-cyan-500/10" onclick="UI.alert('Engineering Nodes Syncing...')">
-                <i class="fas fa-project-diagram text-3xl mb-4 text-blue-400"></i>
-                <p class="text-[9px] font-bold tracking-widest">ENGINEERING</p>
+        <div class="super-panel p-6 border-l-4 border-yellow-500">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h3 class="font-bold">Corporate Ultra</h3>
+                    <p class="text-[8px] opacity-50 uppercase">Full Mirror Unlocked</p>
+                </div>
+                <p class="text-xl font-black">₹999</p>
             </div>
-            <div class="super-panel p-8 text-center cursor-pointer hover:bg-green-500/10" onclick="UI.switch('pay')">
-                <i class="fas fa-shuttle-van text-3xl mb-4 text-green-400"></i>
-                <p class="text-[9px] font-bold tracking-widest uppercase">Global Pay</p>
-            </div>
-            <div class="super-panel p-8 text-center cursor-pointer hover:bg-red-500/10">
-                <i class="fas fa-film text-3xl mb-4 text-red-400"></i>
-                <p class="text-[9px] font-bold tracking-widest uppercase">Media Lab</p>
-            </div>
-            <div class="super-panel p-8 text-center cursor-pointer border-2 border-yellow-500/20" onclick="UI.openCorporate()">
-                <i class="fas fa-handshake text-3xl mb-4 text-yellow-500"></i>
-                <p class="text-[9px] font-bold tracking-widest text-yellow-500 uppercase">Corporate Node</p>
-            </div>
+            <button onclick="SovereignPay.process('Corporate Ultra', 999)" class="hai-button w-full py-4 rounded-xl text-[10px] uppercase">One-Click Activate</button>
         </div>
     </main>
 
-    <section id="pay-view" class="hidden pt-32 px-6 max-w-2xl mx-auto transition-all duration-500">
-        <div class="super-panel p-10 text-center border-2 border-[#00ffcc] bg-cyan-950/5">
-            <h1 class="text-2xl font-['Orbitron'] mb-8 tracking-[10px] text-[#00ffcc]">HAI GLOBAL PAY</h1>
-            <div class="w-32 h-32 border-2 border-dashed border-[#00ffcc] rounded-full mx-auto mb-10 flex items-center justify-center relative">
-                <div class="absolute inset-0 border-t-2 border-[#00ffcc] rounded-full animate-spin"></div>
-                <i class="fas fa-fingerprint text-4xl text-[#00ffcc]"></i>
-            </div>
-            <div id="pay-dashboard" class="hidden space-y-4">
-                <button class="w-full py-4 border border-[#00ffcc] rounded-xl text-[10px] tracking-widest hover:bg-[#00ffcc] hover:text-black transition" onclick="BackendEngine.pay('Quantum Transfer')">Universal Payment (271)</button>
-                <button class="w-full py-4 border border-red-500 text-red-500 rounded-xl text-[10px] tracking-widest" onclick="BackendEngine.sos()">EMERGENCY SOS (277)</button>
-            </div>
-            <div id="pay-auth">
-                <input type="password" id="payKey" placeholder="MASTER KEY" class="w-full bg-black border border-[#00ffcc] p-4 rounded-xl text-center mb-4 text-[#00ffcc] outline-none">
-                <button class="w-full bg-[#00ffcc] text-black py-4 rounded-xl font-bold text-xs" onclick="BackendEngine.auth()">UNLOCK SYSTEM</button>
-            </div>
+    <div id="pay-modal" class="hidden fixed inset-0 z-[2000] bg-black/95 flex flex-col items-center justify-center p-8 text-center">
+        <div id="loader-state">
+            <div class="fast-loader mx-auto mb-6"></div>
+            <h2 class="font-['Orbitron'] text-cyan-400 tracking-[5px] text-xs">HAI GLOBAL PAY</h2>
+            <p class="text-[10px] opacity-40 mt-2 uppercase">Connecting to International Node...</p>
         </div>
+        
+        <div id="success-state" class="hidden">
+            <i class="fas fa-check-circle text-6xl text-green-500 mb-6"></i>
+            <h2 class="text-xl font-bold mb-2">Invoice Generated</h2>
+            <p id="invoice-id" class="text-[9px] font-mono opacity-40 mb-8 uppercase tracking-widest">INV-HAI-000000</p>
+            <div class="super-panel p-6 mb-8 text-left">
+                <p class="text-[10px] opacity-50 uppercase">Billed Via</p>
+                <p class="text-sm font-bold text-cyan-400">HAI Sovereign Global Gateway</p>
+                <div class="border-t border-white/5 my-3"></div>
+                <p class="text-[10px] opacity-50 uppercase">Status</p>
+                <p class="text-sm font-bold text-yellow-500">Awaiting Auto-Verification</p>
+            </div>
+            <button onclick="location.reload()" class="w-full bg-white text-black py-4 rounded-2xl font-black text-xs uppercase">Return to OS</button>
+        </div>
+    </div>
+
+    <section id="admin-view" class="hidden fixed inset-0 z-[3000] bg-[#000814] p-6 pt-28">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="font-['Orbitron'] text-cyan-400">REVENUE HUB</h2>
+            <i class="fas fa-times" onclick="location.reload()"></i>
+        </div>
+        <div id="pending-orders" class="space-y-4">
+            </div>
     </section>
 
     <script>
-        const BackendEngine = {
-            init: function() {
-                let p = 0;
-                const bar = document.getElementById('boot-progress');
-                const txt = document.getElementById('boot-text');
-                const logs = ["Connecting Mirror Nodes...", "Bypassing Latency...", "Syncing Repositories...", "HAI OS LIVE"];
+        const SovereignPay = {
+            init: function() { console.log("HAI Gateway: Fast Node Ready"); },
+
+            process: function(plan, price) {
+                document.getElementById('pay-modal').classList.remove('hidden');
                 
-                const interval = setInterval(() => {
-                    p += 2;
-                    bar.style.width = p + "%";
-                    if(p % 25 === 0) txt.innerText = logs[Math.floor(p/25)-1];
-                    if(p >= 100) {
-                        clearInterval(interval);
-                        setTimeout(() => {
-                            document.getElementById('boot-loader').style.opacity = '0';
-                            setTimeout(() => document.getElementById('boot-loader').style.display = 'none', 1000);
-                            this.startMirrorSync();
-                            this.speak("All global mirrors active. System is now unstoppable.");
-                        }, 500);
-                    }
-                }, 30);
+                // Simulate Fast One-Click Processing
+                setTimeout(() => {
+                    document.getElementById('loader-state').classList.add('hidden');
+                    document.getElementById('success-state').classList.remove('hidden');
+                    document.getElementById('invoice-id').innerText = "INV-HAI-" + Math.floor(Math.random()*1000000);
+                    
+                    // Automatically send to Admin Hub
+                    this.logToAdmin(plan, price);
+                }, 1500);
             },
 
-            startMirrorSync: function() {
-                // Global Mirroring Simulation & Node Tracker
-                setInterval(() => {
-                    const nodeCount = Math.floor(Math.random() * (100 - 95) + 95);
-                    document.getElementById('live-nodes').innerText = `GLOBAL NODES: ${nodeCount}`;
-                    console.log("HAI Sync: Mirroring data to Cloudflare Edge...");
-                }, 4000);
-            },
-
-            auth: function() {
-                const k = document.getElementById('payKey').value;
-                if(k === "HARI_777" || k === "HAI-Admin@786#X") {
-                    document.getElementById('pay-auth').classList.add('hidden');
-                    document.getElementById('pay-dashboard').classList.remove('hidden');
-                    this.speak("Sovereign Identity Verified.");
-                } else { alert("Unauthorized Key!"); }
-            },
-
-            voice: function() { this.speak("Sovereign Voice Sensor Active. I am listening."); },
-
-            speak: function(m) {
-                window.speechSynthesis.cancel();
-                const u = new SpeechSynthesisUtterance(m);
-                u.lang = 'hi-IN';
-                window.speechSynthesis.speak(u);
-            },
-
-            pay: function(t) { this.speak(`${t} processing through 100 mirror nodes.`); alert(`${t}: Quantum Handshake Complete.`); },
-            sos: function() { this.speak("SOS activated. Wiping sensitive local logs and alerting guards."); alert("SOS SIGNAL SENT."); }
+            logToAdmin: function(plan, price) {
+                const list = document.getElementById('pending-orders');
+                const html = `
+                    <div class="super-panel p-6 flex justify-between items-center border-l-4 border-green-500">
+                        <div>
+                            <p class="text-xs font-bold uppercase">${plan}</p>
+                            <p class="text-[10px] text-cyan-400 font-mono">₹${price}</p>
+                        </div>
+                        <button onclick="this.parentElement.remove(); alert('Service Pushed to User!')" class="bg-green-500 text-black px-4 py-2 rounded-xl text-[10px] font-bold">ACTIVATE</button>
+                    </div>`;
+                list.innerHTML += html;
+            }
         };
 
         const UI = {
-            switch: function(v) {
-                document.getElementById('main-view').classList.toggle('hidden', v !== 'main');
-                document.getElementById('pay-view').classList.toggle('hidden', v !== 'pay');
-            },
-            alert: function(m) { alert(`HAI SYSTEM: ${m}`); },
-            openVault: function() {
-                if(prompt("MASTER KEY:") === "HARI_777") alert("Vault Unlocked. All Mirror Backups Accessible.");
-            },
-            openCorporate: function() {
-                this.alert("Opening Global Corporate Gateway. Microsoft and Google nodes ready for sync.");
+            openAdmin: function() {
+                if(prompt("MASTER KEY:") === "HARI_777") {
+                    document.getElementById('admin-view').classList.remove('hidden');
+                }
             }
         };
     </script>
 </body>
 </html>
-
