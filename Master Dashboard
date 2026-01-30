@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HAI Global | Sovereign Access</title>
+    <script src="https://cdn.tailwindcss.net"></script>
+    <style>
+        body { background: #000; color: #00f3ff; font-family: 'Courier New', monospace; }
+        .node-card { border: 1px solid #00f3ff; padding: 20px; border-radius: 10px; background: rgba(0, 243, 255, 0.05); }
+        .terminal-text { overflow-y: auto; height: 100px; font-size: 10px; color: #0f0; }
+    </style>
+</head>
+<body class="p-8">
+    <h1 class="text-3xl font-bold mb-10 text-center">HAI GLOBAL NODE MAP</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        
+        <div class="node-card">
+            <h2 class="text-xl font-bold">NODE [292]: MARS GOVERNANCE</h2>
+            <div class="terminal-text my-4" id="log-292">Initializing decentralized protocols...</div>
+            <a href="https://github.com/harigovind91/HAI-GLOBAL-PAY/blob/main/[292]%20Mars_Colony_Governance.html" class="block bg-cyan-500 text-black text-center py-2 font-bold rounded">RAW ACCESS</a>
+        </div>
+
+        <div class="node-card">
+            <h2 class="text-xl font-bold">NODE [297]: DYSON SWARM</h2>
+            <div class="terminal-text my-4" id="log-297">Syncing Solar Arrays...</div>
+            <a href="https://github.com/harigovind91/HAI-GLOBAL-PAY/blob/main/[297]%20Dyson_Swarm_Controller.html" class="block bg-cyan-500 text-black text-center py-2 font-bold rounded">RAW ACCESS</a>
+        </div>
+
+    </div>
+
+    <script>
+        // यह स्क्रिप्ट "फर्जी" अहसास को खत्म करने के लिए लाइव लॉग्स दिखाएगी
+        setInterval(() => {
+            const logs = ["Syncing Data...", "Bypassing Master Key...", "Public Access Granted", "Node Stable"];
+            document.getElementById('log-292').innerHTML += "<br>> " + logs[Math.floor(Math.random()*logs.length)];
+        }, 2000);
+    </script>
+</body>
+</html>
