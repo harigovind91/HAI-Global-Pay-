@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI Global | Public</title>
+    <script src="https://cdn.tailwindcss.net"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #000814; color: #fff; font-family: 'Poppins', sans-serif; }
+        .service-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 243, 255, 0.1); border-radius: 20px; padding: 24px; }
+        .btn-activate { background: linear-gradient(90deg, #00f3ff, #0077ff); color: #000; font-weight: 800; width: 100%; padding: 12px; border-radius: 10px; margin-top: 20px; }
+        .modal-active { display: flex !important; }
+    </style>
+</head>
+<body class="p-6">
+
+    <div id="auth-box" class="max-w-md mx-auto mt-20 text-center">
+        <h1 class="text-4xl font-bold mb-8">HAI GLOBAL</h1>
+        <input type="text" id="uname" placeholder="Enter Your Name" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl mb-4 outline-none focus:border-cyan-400">
+        <button onclick="login()" class="btn-activate">START ACCESS</button>
+    </div>
+
+    <div id="dashboard" class="hidden max-w-lg mx-auto">
+        <div class="flex justify-between items-center mb-10">
+            <div>
+                <h2 class="text-2xl font-bold">HAI GLOBAL</h2>
+                <p class="text-xs text-cyan-400 uppercase tracking-widest" id="hello-user"></p>
+            </div>
+            <button onclick="logout()" class="text-[10px] opacity-50 border border-white/20 px-3 py-1 rounded">LOGOUT</button>
+        </div>
+
+        <div class="space-y-6">
+            <div class="service-card">
+                <h3 class="text-xl font-bold">Neural Pro</h3>
+                <p class="text-xs opacity-50">Full Node Activation</p>
+                <p class="text-2xl font-black mt-4">₹499</p>
+                <button onclick="openPay('Neural Pro')" class="btn-activate">Activate Service</button>
+            </div>
+            <div class="service-card">
+                <h3 class="text-xl font-bold">Corporate Ultra</h3>
+                <p class="text-xs opacity-50">Enterprise Mirror</p>
+                <p class="text-2xl font-black mt-4">₹999</p>
+                <button onclick="openPay('Corporate Ultra')" class="btn-activate">Activate Service</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-popup" class="hidden fixed inset-0 bg-black/95 items-center justify-center p-8 z-[999]">
+        <div class="text-center">
+            <i class="fas fa-check-circle text-7xl text-cyan-400 mb-6"></i>
+            <h2 class="text-2xl font-bold mb-2">Deployed!</h2>
+            <p id="tx-id" class="text-xs opacity-40 font-mono mb-8"></p>
+            <button onclick="closePay()" class="bg-white text-black px-10 py-3 rounded-full font-bold">DONE</button>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            let n = document.getElementById('uname').value;
+            if(n) {
+                localStorage.setItem('hai_user', n);
+                location.reload();
+            }
+        }
+        function logout() {
+            localStorage.clear();
+            location.reload();
+        }
+        window.onload = function() {
+            let u = localStorage.getItem('hai_user');
+            if(u) {
+                document.getElementById('auth-box').style.display = 'none';
+                document.getElementById('dashboard').classList.remove('hidden');
+                document.getElementById('hello-user').innerText = "Active: " + u;
+            }
+        }
+        function openPay(s) {
+            document.getElementById('success-popup').classList.add('modal-active');
+            document.getElementById('tx-id').innerText = "TXN-" + Math.floor(Math.random()*999999);
+        }
+        function closePay() {
+            document.getElementById('success-popup').classList.remove('modal-active');
+        }
+    </script>
+</body>
+</html>
